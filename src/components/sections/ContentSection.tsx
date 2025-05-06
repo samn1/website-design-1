@@ -1,3 +1,4 @@
+
 import React from "react";
 
 interface ContentSectionProps {
@@ -20,11 +21,11 @@ const ContentSection: React.FC<ContentSectionProps> = ({
   }[textAlign];
 
   return (
-    <section className={`w-full ${className}`}>
-      <h2 className="text-black text-[40px] font-bold">
+    <section className={`w-full max-w-6xl mx-auto ${className}`}>
+      <h2 className="text-2xl md:text-3xl font-bold mb-3">
         {title}
       </h2>
-      <p className={`text-black text-[32px] font-normal ${textAlignClass} max-md:max-w-full`}>
+      <p className={`text-base md:text-lg ${textAlignClass} max-w-4xl`}>
         {content}
       </p>
     </section>

@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -8,14 +9,14 @@ interface FooterColumnProps {
 
 const FooterColumn: React.FC<FooterColumnProps> = ({ title, links }) => {
   return (
-    <div className="w-3/12 max-md:w-full max-md:ml-0">
-      <div className="flex grow flex-col text-2xl text-black font-normal whitespace-nowrap max-md:mt-10">
-        <h3 className="text-[32px] self-stretch">{title}</h3>
+    <div className="w-full md:w-1/4 mb-6 md:mb-0">
+      <div className="flex flex-col text-base">
+        <h3 className="text-lg font-medium mb-3">{title}</h3>
         {links.map((link, index) => (
           <Link 
             key={index} 
             to="#" 
-            className={index === 0 ? "mt-[9px]" : ""}
+            className="mb-2 hover:underline"
           >
             {link}
           </Link>
@@ -46,10 +47,10 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer>
-      <div className="border w-[1750px] shrink-0 max-w-full h-px mt-8 border-black border-solid" />
-      <div className="w-[1057px] max-w-full ml-[34px] mt-[38px]">
-        <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
+    <footer className="py-10 px-8">
+      <div className="border-t border-black w-full mb-8" />
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-wrap">
           {footerColumns.map((column, index) => (
             <FooterColumn 
               key={index} 
@@ -59,7 +60,7 @@ const Footer: React.FC = () => {
           ))}
         </div>
       </div>
-      <p className="text-black text-xl font-normal text-center mt-[161px] max-md:mt-10">
+      <p className="text-sm text-center mt-10">
         ©Copyrights Placeholder
       </p>
     </footer>

@@ -1,3 +1,4 @@
+
 import React from "react";
 
 interface StatItem {
@@ -12,23 +13,23 @@ interface StatsSectionProps {
 
 const StatsSection: React.FC<StatsSectionProps> = ({ stats, description }) => {
   return (
-    <section className="w-full mt-[107px] max-md:mt-10">
-      <div className="border self-center w-[1750px] shrink-0 max-w-full h-px border-black border-solid" />
+    <section className="w-full my-12 max-w-6xl mx-auto">
+      <div className="border-t border-black w-full my-8" />
       
-      <div className="self-center flex w-[1254px] max-w-full items-stretch gap-[40px_100px] text-black whitespace-nowrap text-center flex-wrap mt-11 max-md:mt-10">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center my-8">
         {stats.map((stat, index) => (
-          <div key={index} className="flex flex-col items-stretch flex-1">
-            <div className={`text-8xl font-bold ${index === 3 ? "ml-5 max-md:ml-2.5" : "self-center"} max-md:text-[40px]`}>
+          <div key={index} className="flex flex-col items-center">
+            <div className="text-4xl md:text-5xl font-bold">
               {stat.value}
             </div>
-            <div className="text-[32px] font-normal">
+            <div className="text-base mt-2">
               {stat.label}
             </div>
           </div>
         ))}
       </div>
       
-      <p className="text-black text-[32px] font-normal text-center self-center w-[1135px] mt-[68px] max-md:max-w-full max-md:mt-10">
+      <p className="text-base md:text-lg text-center max-w-4xl mx-auto my-8">
         {description}
       </p>
     </section>

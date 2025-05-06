@@ -1,3 +1,4 @@
+
 import React from "react";
 
 interface FeatureItem {
@@ -11,13 +12,13 @@ interface FeatureGridProps {
 
 const FeatureGrid: React.FC<FeatureGridProps> = ({ features }) => {
   return (
-    <section className="self-center w-full max-w-[1453px] mt-[107px] max-md:max-w-full max-md:mt-10">
-      <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
+    <section className="w-full my-12 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {features.map((feature, index) => (
-          <div key={index} className="w-[33%] max-md:w-full max-md:ml-0">
-            <div className="text-[32px] text-black font-normal max-md:mt-10">
-              {feature.image}
-              <p className={`${index === 0 ? "mt-5" : "mt-[33px]"} max-md:mr-2.5`}>
+          <div key={index} className="bg-[rgba(250,250,250,1)] rounded-sm shadow-sm">
+            <div className="text-base">
+              <div className="bg-[rgba(217,217,217,1)] w-full h-[240px]" />
+              <p className="mt-4 p-4 pb-6 text-base">
                 {feature.description}
               </p>
             </div>
