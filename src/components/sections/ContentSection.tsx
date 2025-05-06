@@ -22,10 +22,10 @@ const ContentSection: React.FC<ContentSectionProps> = ({
 
   return (
     <section className={`w-full max-w-6xl mx-auto ${className}`}>
-      <h2 className="text-2xl md:text-3xl font-bold mb-3">
+      <h2 className="text-xl md:text-2xl font-bold mb-3">
         {title}
       </h2>
-      <p className={`text-base md:text-lg ${textAlignClass} max-w-4xl`}>
+      <p className={`text-sm md:text-base ${textAlignClass} max-w-4xl`}>
         {content}
       </p>
     </section>

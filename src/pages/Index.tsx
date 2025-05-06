@@ -1,26 +1,24 @@
 
 import React from "react";
-import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import ContentSection from "@/components/sections/ContentSection";
 import FeatureGrid from "@/components/sections/FeatureGrid";
 import StatsSection from "@/components/sections/StatsSection";
 import ContactSection from "@/components/sections/ContactSection";
-import Footer from "@/components/layout/Footer";
 
 const Index: React.FC = () => {
   // Feature grid items
   const features = [
     {
-      image: <div className="bg-[rgba(217,217,217,1)] flex shrink-0 h-[301px]" />,
+      image: <div className="bg-[rgba(217,217,217,1)] flex shrink-0 h-[240px]" />,
       description: "Lorem ipsum dolor sit amet consectetur. A nascetur luctus diam odio sagittis. Adipiscing convallis a risus massa nullam non nec fames et."
     },
     {
-      image: <div className="bg-[rgba(217,217,217,1)] flex shrink-0 h-[301px]" />,
+      image: <div className="bg-[rgba(217,217,217,1)] flex shrink-0 h-[240px]" />,
       description: "Lorem ipsum dolor sit amet consectetur. A nascetur luctus diam odio sagittis. Adipiscing convallis a risus massa nullam non nec fames et."
     },
     {
-      image: <div className="bg-[rgba(217,217,217,1)] flex shrink-0 h-[301px]" />,
+      image: <div className="bg-[rgba(217,217,217,1)] flex shrink-0 h-[240px]" />,
       description: "Lorem ipsum dolor sit amet consectetur. A nascetur luctus diam odio sagittis. Adipiscing convallis a risus massa nullam non nec fames et."
     }
   ];
@@ -50,18 +48,17 @@ const Index: React.FC = () => {
   return (
     <div className="bg-white overflow-hidden">
       <div className="bg-[rgba(218,218,218,1)]">
-        <Navbar />
         <Hero />
       </div>
       
-      <main className="px-6 md:px-8">
+      <div className="px-4 sm:px-6 md:px-8">
         <div className="max-w-6xl mx-auto">
           {contentSections.map((section, index) => (
             <ContentSection 
               key={index}
               title={section.title}
               content={section.content}
-              className={index > 0 ? "mt-10 md:mt-16" : "mt-8 md:mt-12"}
+              className={index > 0 ? "mt-8 md:mt-12" : "mt-6 md:mt-10"}
             />
           ))}
         </div>
@@ -72,13 +69,9 @@ const Index: React.FC = () => {
           stats={stats} 
           description={statsDescription} 
         />
-      </main>
+      </div>
       
       <ContactSection />
-      
-      <div className="bg-[rgba(217,217,217,1)]">
-        <Footer />
-      </div>
     </div>
   );
 };
