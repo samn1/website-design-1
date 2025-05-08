@@ -1,73 +1,44 @@
-# Welcome to your Lovable project
+# Isatec International Technology Corporation Website
 
-## Project info
+A clean, modern website built with vanilla HTML, CSS, and JavaScript.
 
-**URL**: https://lovable.dev/projects/ee94362f-39ae-4a73-b420-06a8b2366d2b
+## Project Structure
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/ee94362f-39ae-4a73-b420-06a8b2366d2b) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+.
+├── index.html          # Main HTML file
+├── css/
+│   ├── styles.css      # Main styles
+│   └── animations.css  # Animation styles
+├── js/
+│   └── main.js         # JavaScript functionality
+└── README.md          # This file
 ```
 
-**Edit a file directly in GitHub**
+## Features
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Responsive design
+- Modern animations and transitions
+- Contact form functionality
+- Clean, maintainable code structure
 
-**Use GitHub Codespaces**
+## Getting Started
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Clone the repository
+2. Open `index.html` in your browser
+3. Start editing the files to customize the website
 
-## What technologies are used for this project?
+## Development
 
-This project is built with:
+- Edit `index.html` to modify the content
+- Modify `css/styles.css` to change the styling
+- Adjust `css/animations.css` to customize animations
+- Update `js/main.js` to add or modify functionality
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Browser Support
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/ee94362f-39ae-4a73-b420-06a8b2366d2b) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+The website is compatible with all modern browsers:
+- Chrome
+- Firefox
+- Safari
+- Edge
