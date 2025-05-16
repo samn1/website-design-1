@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Upload</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/page-transitions.css">
+    <link rel="stylesheet" href="css/products.css">
+    <style>
+      .upload-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: #f8f8f8;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .upload-section {
+        margin-bottom: 2rem;
+      }
+      
+      .file-upload {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .file-input-container {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .file-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+      
+      .file-input-label {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      
+      .file-input-label:hover {
+        background-color: #0069d9;
+      }
+      
+      .file-name {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: #555;
+      }
+      
+      .upload-btn {
+        padding: 0.8rem 1.5rem;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 1rem;
+      }
+      
+      .upload-btn:hover {
+        background-color: #218838;
+      }
+      
+      .upload-btn:disabled {
+        background-color: #6c757d;
+        cursor: not-allowed;
+      }
+      
+      .status-message {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 4px;
+      }
+      
+      .status-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+      
+      .status-error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+      
+      .product-preview {
+        margin-top: 2rem;
+      }
+      
+      .preview-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+      
+      .product-card {
+        height: auto;
+        min-height: 320px;
+        max-width: 100%;
+      }
+      
+      .template-link {
+        display: inline-block;
+        margin-top: 0.5rem;
+        color: #007bff;
+        text-decoration: underline;
+      }
+      
+      .instructions {
+        background-color: #f0f0f0;
+        padding: 1rem;
+        border-radius: 4px;
+        margin-bottom: 1.5rem;
+      }
+      
+      .instructions ul {
+        margin: 0.5rem 0 0.5rem 1.5rem;
+        padding: 0;
+      }
+      
+      .instructions li {
+        margin-bottom: 0.3rem;
+      }
+      
+      @media (max-width: 768px) {
+        .preview-grid {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .preview-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body class="page-transition">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-logo"></div>
+      <div class="navbar-links" id="navbarLinks">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="#footer">Contact</a>
+      </div>
+      <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </nav>
+
+    <main>
+      <div class="products-header animate">
+        <h1 class="products-title">Product Upload System</h1>
+      </div>
+      
+      <div class="upload-container">
+        <div class="instructions">
+          <h3>Instructions:</h3>
+          <ul>
+            <li>You can now upload a <b>JSON</b> file (recommended) or an Excel file.</li>
+            <li>JSON format is easier and less error-prone. See below for the required structure.</li>
+            <li>For JSON, use the following structure:
+              <pre style="background:#eee;padding:0.5em;overflow:auto;font-size:0.95em;">{
+  "products": [
+    { "Name": "P1", "Product Line": "L1", "Product ID": "X21", "Product Description": "Description", "Product Image": "https://via.placeholder.com/150", "Status": true },
+    ...
+  ],
+  "productLines": ["L1", "L2"]
+}</pre>
+            </li>
+            <li><b>Product Image</b> should be a URL or path to the image. If not provided, a placeholder will be shown.</li>
+            <li>For Excel, use the template as before.</li>
+          </ul>
+          <a href="#" id="downloadTemplate" class="template-link">Download Excel Template</a>
+        </div>
+        
+        <div class="upload-section">
+          <h2>Upload Product File</h2>
+          <div class="file-upload">
+            <div class="file-input-container">
+              <label class="file-input-label">Choose File (JSON or Excel)
+                <input type="file" id="productFile" class="file-input" accept=".json,.xlsx,.xls" />
+              </label>
+            </div>
+            <div class="file-name" id="fileName">No file selected</div>
+          </div>
+          
+          <button id="uploadBtn" class="upload-btn" disabled>Upload and Process</button>
+          
+          <div id="statusMessage" class="status-message" style="display: none;"></div>
+        </div>
+        
+        <div class="product-preview" id="productPreview" style="display: none;">
+          <h2>Product Preview</h2>
+          <div class="preview-grid" id="previewGrid"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="footer">
+      <section>
+        <div class="contact-section">
+          <div class="container">
+            <h2>Get in Touch</h2>
+            <p>We'd love to hear from you. Please use the contact information below</p>
+            <div></div>
+            <h3>Address</h3>
+            <p>1234 Satellite Drive, Space City, SC 90210</p>
+            <h3>Email</h3>
+            <p>contact@satellitecompany.com</p>
+            <h3>Telephone</h3>
+            <p>+1 (555) 123-4567</p>
+            <h3>Fax</h3>
+            <p>+1 (555) 987-6543</p>
+            <h3>Hours</h3>
+            <p>Monday - Friday: 9am - 5pm</p>
+            <h3>Connect With Us</h3>
+            <p>We'd love to hear from you. Please use the contact information below</p>
+            <!-- Socials: Only icons, no text -->
+            <div class="footer-socials">
+              <div class="social-icons">
+                <a href="#" aria-label="Facebook" class="social-icon">
+                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"></path></svg>
+                </a>
+                <a href="#" aria-label="Twitter" class="social-icon">
+                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M24 4.557a9.83 9.83 0 0 1-2.828.775A4.932 4.932 0 0 0 23.337 3.1a9.864 9.864 0 0 1-3.127 1.195A4.916 4.916 0 0 0 16.616 2c-2.73 0-4.942 2.21-4.942 4.936 0 .386.045.763.127 1.124C7.728 7.89 4.1 5.924 1.671 2.905a4.822 4.822 0 0 0-.666 2.482c0 1.71.87 3.213 2.188 4.096A4.904 4.904 0 0 1 .964 8.1v.062c0 2.385 1.693 4.374 3.946 4.827a4.996 4.996 0 0 1-2.212.084c.623 1.942 2.432 3.355 4.576 3.395A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.21-.005-.423-.015-.633A9.936 9.936 0 0 0 24 4.557z"></path></svg>
+                </a>
+                <a href="#" aria-label="LinkedIn" class="social-icon">
+                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M22.23 0H1.77C.792 0 0 .771 0 1.723v20.554C0 23.229.792 24 1.77 24h20.46C23.208 24 24 23.229 24 22.277V1.723C24 .771 23.208 0 22.23 0zM7.12 20.452H3.56V9h3.56v11.452zM5.34 7.633a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM20.452 20.452h-3.56v-5.605c0-1.336-.025-3.057-1.865-3.057-1.867 0-2.153 1.454-2.153 2.957v5.705h-3.56V9h3.418v1.561h.049c.476-.899 1.637-1.847 3.37-1.847 3.602 0 4.267 2.37 4.267 5.455v6.283z"></path></svg>
+                </a>
+                <a href="#" aria-label="Instagram" class="social-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="24" rx="6" fill="#222"/>
+                    <path d="M12 7.2A4.8 4.8 0 1 0 12 16.8A4.8 4.8 0 1 0 12 7.2Z" fill="#fff"/>
+                    <circle cx="18.2" cy="5.8" r="1.2" fill="#fff"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </footer>
+    
+    <script src="js/main.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const fileInput = document.getElementById('productFile');
+        const fileName = document.getElementById('fileName');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const statusMessage = document.getElementById('statusMessage');
+        const productPreview = document.getElementById('productPreview');
+        const previewGrid = document.getElementById('previewGrid');
+        const downloadTemplate = document.getElementById('downloadTemplate');
+        
+        // Handle template download
+        downloadTemplate.addEventListener('click', function(e) {
+          e.preventDefault();
+          showStatus('success', 'Downloading template...');
+          const serverUrl = window.location.origin;
+          const downloadUrl = `${serverUrl}/api/download-template`;
+          const link = document.createElement('a');
+          link.href = downloadUrl;
+          link.download = 'product_template.xlsx';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+        
+        // Handle file selection
+        fileInput.addEventListener('change', function(e) {
+          if (fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            fileName.textContent = file.name;
+            uploadBtn.disabled = false;
+            statusMessage.style.display = 'none';
+            productPreview.style.display = 'none';
+          } else {
+            fileName.textContent = 'No file selected';
+            uploadBtn.disabled = true;
+          }
+        });
+        
+        // Handle file upload
+        uploadBtn.addEventListener('click', async function() {
+          if (!fileInput.files.length) return;
+          const file = fileInput.files[0];
+          const ext = file.name.split('.').pop().toLowerCase();
+          uploadBtn.disabled = true;
+          uploadBtn.textContent = 'Processing...';
+          try {
+            let result;
+            if (ext === 'json') {
+              // JSON upload
+              const formData = new FormData();
+              formData.append('file', file);
+              const response = await fetch('/api/upload-json', {
+                method: 'POST',
+                body: formData
+              });
+              if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Server error: ${response.status} - ${errorText}`);
+              }
+              // After upload, fetch products
+              const productsResp = await fetch('/api/products');
+              result = await productsResp.json();
+              showStatus('success', 'Products uploaded and processed successfully!');
+              displayProductCards(result.products);
+            } else {
+              // Excel upload (fallback)
+              const formData = new FormData();
+              formData.append('file', file);
+              const response = await fetch('/api/upload-products-excel', {
+                method: 'POST',
+                body: formData
+              });
+              if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Server error: ${response.status} - ${errorText}`);
+              }
+              const contentType = response.headers.get('content-type');
+              if (!contentType || !contentType.includes('application/json')) {
+                const text = await response.text();
+                throw new Error('Server returned non-JSON response');
+              }
+              result = await response.json();
+              if (result.success) {
+                showStatus('success', 'Products uploaded and processed successfully!');
+                displayProductCards(result.data.products);
+              } else {
+                showStatus('error', `Error: ${result.message}`);
+              }
+            }
+          } catch (error) {
+            showStatus('error', `Error: ${error.message}`);
+          } finally {
+            uploadBtn.disabled = false;
+            uploadBtn.textContent = 'Upload and Process';
+          }
+        });
+        
+        // Display status message
+        function showStatus(type, message) {
+          statusMessage.textContent = message;
+          statusMessage.className = 'status-message';
+          statusMessage.classList.add(`status-${type}`);
+          statusMessage.style.display = 'block';
+        }
+        
+        // Display product cards in preview
+        function displayProductCards(products) {
+          if (!products || products.length === 0) {
+            productPreview.style.display = 'none';
+            return;
+          }
+          previewGrid.innerHTML = '';
+          products.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card animate';
+            const statusValue = String(product.Status).toLowerCase();
+            const isVisible = statusValue === 'true' || statusValue === 'active' || statusValue === '1';
+            const statusDisplay = isVisible ? 
+              '<span style="color:green;font-weight:bold;">Visible</span>' : 
+              '<span style="color:red;font-weight:bold;">Hidden</span>';
+            // Product image logic
+            let imageUrl = product['Product Image'] || product['ProductImage'] || product['Image'] || '';
+            if (!imageUrl) {
+              imageUrl = 'https://via.placeholder.com/150?text=No+Image';
+            }
+            card.innerHTML = `
+              <div class="product-image" style="background-image:url('${imageUrl}');background-size:cover;background-position:center;"></div>
+              <div style="padding:0.5rem 0 0.2rem 0.5rem;font-size:0.9rem;color:#444;">Product ID: ${product['Product ID'] || 'N/A'}</div>
+              <div style="font-weight:bold;font-size:1.1rem;padding-left:0.5rem;">${product.Name || 'Unnamed Product'}</div>
+              <div style="padding:0.2rem 0 0.2rem 0.5rem;font-size:0.9rem;color:#666;">Line: ${product['Product Line'] || 'N/A'}</div>
+              <div style="padding:0.2rem 0.5rem 0.5rem 0.5rem;font-size:0.95rem;color:#444;">${product['Product Description'] || 'No description available.'}</div>
+              <div style="padding:0.2rem 0 0.5rem 0.5rem;font-size:0.9rem;">Status: ${statusDisplay}</div>
+            `;
+            previewGrid.appendChild(card);
+          });
+          productPreview.style.display = 'block';
+          setTimeout(() => {
+            document.querySelectorAll('.product-card').forEach(card => {
+              card.classList.add('active');
+            });
+          }, 100);
+        }
+        
+        // Animation functions
+        function animateNavbarLinks() {
+          var navLinks = document.querySelectorAll('.navbar-links a');
+          navLinks.forEach(function(link) {
+            link.classList.remove('animate');
+          });
+          void document.body.offsetWidth;
+          navLinks.forEach(function(link) {
+            link.classList.add('animate');
+          });
+        }
+        
+        animateNavbarLinks();
+        
+        window.addEventListener('pageshow', function(event) {
+          if (event.persisted) animateNavbarLinks();
+        });
+        
+        // Hamburger menu toggle for small screens
+        const toggle = document.getElementById('navbarToggle');
+        const links = document.getElementById('navbarLinks');
+        
+        toggle.addEventListener('click', function() {
+          links.classList.toggle('active');
+        });
+      });
+    </script>
+  </body>
+</html> 

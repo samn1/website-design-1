@@ -1,172 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wilsun Site</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/page-transitions.css">
-
-    <meta name="description" content="Website Content Description" />
-    <meta name="author" content="Sam Nwaobi" />
-
-    <meta property="og:title" content="website-property-title" />
-    <meta property="og:description" content="Website Content Description" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
-
-  <body class="page-transition">
-    <!-- Hero Section -->
-    <section class="hero">
-      <nav class="navbar">
-        <div class="navbar-logo"></div>
-        <div class="navbar-links">
-          <a href="#services">Services</a>
-          <a href="#footer">Contact</a>
-          <a href="products.html" class="btn-primary">View Products</a>
-        </div>
-      </nav>
-
-      <div class="hero-top-right">
-        <p id="hero-subtitle">Lorem ipsum dolor sit amet consectetur. A nascetur luctus diam odio sagittis. Adipiscing convallis a risus massa nullam non nec fames et.</p>
-      </div>
-      <div class="hero-bottom-left">
-        <div class="max-w-6xl">
-          <h1 id="hero-title">Connecting the world<br>through satellites.</h1>
-        </div>
-      </div>
-    </section>
-
-    <!-- Body Section -->
-    <section class="body-section">
-      <div class="bg-white overflow-hidden">
-        <!-- Content Sections -->
-        <div class="content-sections px-4 sm:px-6 md:px-8">
-            <div class="max-w-6xl mx-auto">
-                <section id="services" class="content-section">
-                    <h2>Placeholder</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur. A nascetur luctus diam odio sagittis. Adipiscing convallis a risus massa nullam non nec fames et. Amet sit turpis viverra ipsum neque tellus. Rhoncus turpis laoreet fringilla suspendisse facilisi lectus posuere.</p>
-                </section>
-
-                <section class="content-section">
-                    <h2>Placeholder</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur. A nascetur luctus diam odio sagittis. Adipiscing convallis a risus massa nullam non nec fames et. Amet sit turpis viverra ipsum neque tellus. Rhoncus turpis laoreet fringilla suspendisse facilisi lectus posuere.</p>
-                </section>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isatec International Technology Corporation</title>
+    <!-- Google Fonts: Lexend and Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lexend:wght@700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            font-family: 'Inter', Arial, sans-serif;
+            background: #dedede url('static-demo-bg.jpg') top center no-repeat;
+            background-size: 100% 100%;
+        }
+        body {
+            min-height: 5477px;
+            width: 100vw;
+            overflow-x: hidden;
+            position: relative;
+            scroll-snap-type: y mandatory;
+        }
+        .snap-section {
+            width: 100vw;
+            scroll-snap-align: start;
+        }
+        .snap-hero { height: 1000px; }
+        .snap-global { height: 1500px; }
+        .snap-engineering { height: 2500px; }
+        .snap-footer { height: 477px; }
+        .navbar-outer {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            width: 100vw;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .navbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 96vw;
+            max-width: 1800px;
+            height: 48px;
+            background: rgba(120,120,120,0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 24px;
+            box-shadow: 0 2px 10px 0 rgba(0,0,0,0.13);
+            padding: 0 32px;
+            pointer-events: auto;
+            transition: color 0.3s;
+        }
+        .navbar-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #fff;
+            margin-right: 1.5rem;
+            box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
+            cursor: pointer;
+        }
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 2.1rem;
+            justify-content: flex-end;
+            flex: 1;
+        }
+        .navbar-link {
+            text-decoration: none;
+            font-family: 'Inter', Arial, sans-serif;
+            font-size: 1.08rem;
+            font-weight: 500;
+            padding: 0.25rem 0.9rem;
+            border-radius: 12px;
+            transition: background 0.18s, color 0.18s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .navbar-link.products {
+            border: 1.5px solid #fff;
+            background: #fff;
+            color: #222;
+            padding: 0.18rem 1.1rem;
+            margin-left: 0.7rem;
+            font-weight: 500;
+            border-radius: 20px;
+            min-width: 120px;
+            min-height: 32px;
+            box-sizing: border-box;
+            transition: background 0.18s, color 0.18s, border 0.18s;
+        }
+        .navbar-link:hover {
+            background: rgba(255,255,255,0.18);
+            color: #000;
+        }
+        /* Dark mode for middle section */
+        .navbar-dark .navbar-link:not(.products) {
+            color: #222;
+        }
+        .navbar-dark .navbar-link.products {
+            background: #222;
+            color: #fff;
+            border: 1.5px solid #222;
+        }
+        .navbar-dark .navbar-link:hover {
+            color: #000;
+            background: rgba(0,0,0,0.08);
+        }
+        /* Footer section: revert to white text and white button */
+        .navbar-footer .navbar-link,
+        .navbar-footer .navbar-link.products {
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+        .navbar-footer .navbar-link.products {
+            background: #fff !important;
+            color: #222 !important;
+            border: 1.5px solid #fff !important;
+        }
+        .navbar-footer .navbar-link:not(.products) {
+            color: #fff !important;
+        }
+        .navbar-footer .navbar-link:hover {
+            color: #000 !important;
+            background: rgba(255,255,255,0.18) !important;
+        }
+        @media (max-width: 700px) {
+            .navbar-inner {
+                width: 98vw;
+                padding: 0 8px;
+            }
+            .navbar-links {
+                gap: 1.1rem;
+            }
+            .navbar-logo {
+                margin-right: 0.7rem;
+            }
+        }
+        .anchor {
+            position: absolute;
+            left: 0;
+            width: 100vw;
+            height: 1px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar-outer" id="navbar-outer">
+        <div class="navbar-inner" id="navbar-inner">
+            <div class="navbar-logo" id="navbar-logo"></div>
+            <div class="navbar-links">
+                <a href="#hero" class="navbar-link">Services</a>
+                <a href="#footer" class="navbar-link">Contact</a>
+                <a href="/products.html" class="navbar-link products">View Products</a>
             </div>
-
-            <!-- Feature Grid -->
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <div class="feature-image"></div>
-                    <p>Lorem ipsum dolor sit amet consectetur. A nascetur luctus diam odio sagittis. Adipiscing convallis a risus massa nullam non nec fames et.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-image"></div>
-                    <p>Lorem ipsum dolor sit amet consectetur. A nascetur luctus diam odio sagittis. Adipiscing convallis a risus massa nullam non nec fames et.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-image"></div>
-                    <p>Lorem ipsum dolor sit amet consectetur. A nascetur luctus diam odio sagittis. Adipiscing convallis a risus massa nullam non nec fames et.</p>
-                </div>
-            </div>
-
-            <!-- Stats Section -->
-            <div class="stats-section">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <span class="stat-value">1</span>
-                        <span class="stat-label">Value</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">2</span>
-                        <span class="stat-label">Value</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">3</span>
-                        <span class="stat-label">Value</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">4</span>
-                        <span class="stat-label">Value</span>
-                    </div>
-                </div>
-                <p class="stats-description">Lorem ipsum dolor sit amet consectetur. A nascetur luctus diam odio sagittis. Adipiscing convallis a risus massa nullam non nec fames et. Amet sit turpis viverra ipsum neque tellus. Rhoncus turpis laoreet fringilla suspendisse facilisi lectus posuere.</p>
-            </div>
         </div>
-      </div>
-    </section>
+    </div>
 
-    <!-- Footer Section -->
-    <footer id="footer">
-      <section>
-        <div class="contact-section">
-          <div class="container">
-            <h2>Get in Touch</h2>
-            <p>We'd love to hear from you. Please use the contact information below</p>
-            <div></div>
-            <h3>Address</h3>
-            <p>1234 Satellite Drive, Space City, SC 90210</p>
-            <h3>Email</h3>
-            <p>contact@satellitecompany.com</p>
-            <h3>Telephone</h3>
-            <p>+1 (555) 123-4567</p>
-            <h3>Fax</h3>
-            <p>+1 (555) 987-6543</p>
-            <h3>Hours</h3>
-            <p>Monday - Friday: 9am - 5pm</p>
-            <h3>Connect With Us</h3>
-            <p>We'd love to hear from you. Please use the contact information below</p>
-            <!-- Socials: Only icons, no text -->
-            <div class="footer-socials">
-              <div class="social-icons">
-                <a href="#" aria-label="Facebook" class="social-icon">
-                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"></path></svg>
-                </a>
-                <a href="#" aria-label="Twitter" class="social-icon">
-                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M24 4.557a9.83 9.83 0 0 1-2.828.775A4.932 4.932 0 0 0 23.337 3.1a9.864 9.864 0 0 1-3.127 1.195A4.916 4.916 0 0 0 16.616 2c-2.73 0-4.942 2.21-4.942 4.936 0 .386.045.763.127 1.124C7.728 7.89 4.1 5.924 1.671 2.905a4.822 4.822 0 0 0-.666 2.482c0 1.71.87 3.213 2.188 4.096A4.904 4.904 0 0 1 .964 8.1v.062c0 2.385 1.693 4.374 3.946 4.827a4.996 4.996 0 0 1-2.212.084c.623 1.942 2.432 3.355 4.576 3.395A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.21-.005-.423-.015-.633A9.936 9.936 0 0 0 24 4.557z"></path></svg>
-                </a>
-                <a href="#" aria-label="LinkedIn" class="social-icon">
-                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M22.23 0H1.77C.792 0 0 .771 0 1.723v20.554C0 23.229.792 24 1.77 24h20.46C23.208 24 24 23.229 24 22.277V1.723C24 .771 23.208 0 22.23 0zM7.12 20.452H3.56V9h3.56v11.452zM5.34 7.633a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM20.452 20.452h-3.56v-5.605c0-1.336-.025-3.057-1.865-3.057-1.867 0-2.153 1.454-2.153 2.957v5.705h-3.56V9h3.418v1.561h.049c.476-.899 1.637-1.847 3.37-1.847 3.602 0 4.267 2.37 4.267 5.455v6.283z"></path></svg>
-                </a>
-                <a href="#" aria-label="Instagram" class="social-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="24" height="24" rx="6" fill="#222"/>
-                    <path d="M12 7.2A4.8 4.8 0 1 0 12 16.8A4.8 4.8 0 1 0 12 7.2Z" fill="#fff"/>
-                    <circle cx="18.2" cy="5.8" r="1.2" fill="#fff"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </footer>
+    <!-- Snap scroll sections (invisible, just for scroll snapping) -->
+    <div id="hero" class="snap-section snap-hero"></div>
+    <div id="global-reach" class="snap-section snap-global"></div>
+    <div id="engineering" class="snap-section snap-engineering"></div>
+    <div id="footer" class="snap-section snap-footer"></div>
 
-    <script src="js/main.js"></script>
     <script>
-      function animateNavbarLinks() {
-        document.querySelectorAll('.navbar-links a').forEach(function(link) {
-          link.classList.remove('animate');
-        });
-        // Force reflow
-        void document.body.offsetWidth;
-        document.querySelectorAll('.navbar-links a').forEach(function(link) {
-          link.classList.add('animate');
-        });
-      }
-      document.addEventListener('DOMContentLoaded', animateNavbarLinks);
-      window.addEventListener('pageshow', function(event) {
-        if (event.persisted) animateNavbarLinks();
-      });
-      document.querySelector('.navbar-logo').addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+        // Make logo scroll to top
+        document.getElementById('navbar-logo').onclick = function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        // Change navbar color based on scroll position
+        function updateNavbarColor() {
+            const navbar = document.getElementById('navbar-inner');
+            const links = navbar.querySelectorAll('.navbar-link:not(.products)');
+            const productsBtn = navbar.querySelector('.navbar-link.products');
+            const scrollY = window.scrollY || window.pageYOffset;
+            // Section transitions
+            if (scrollY < 1000) {
+                navbar.classList.remove('navbar-dark');
+                navbar.classList.remove('navbar-footer');
+                // Services/Contact white, Products white fill/black text
+                links.forEach(link => link.style.color = '#fff');
+                productsBtn.style.background = '#fff';
+                productsBtn.style.color = '#222';
+                productsBtn.style.borderColor = '#fff';
+            } else if (scrollY >= 1000 && scrollY < 5000) {
+                navbar.classList.add('navbar-dark');
+                navbar.classList.remove('navbar-footer');
+                // All black, Products black fill/white text
+                links.forEach(link => link.style.color = '#222');
+                productsBtn.style.background = '#222';
+                productsBtn.style.color = '#fff';
+                productsBtn.style.borderColor = '#222';
+            } else {
+                navbar.classList.remove('navbar-dark');
+                navbar.classList.remove('navbar-footer');
+                // Footer: same as hero
+                links.forEach(link => link.style.color = '#fff');
+                productsBtn.style.background = '#fff';
+                productsBtn.style.color = '#222';
+                productsBtn.style.borderColor = '#fff';
+            }
+        }
+        window.addEventListener('scroll', updateNavbarColor);
+        window.addEventListener('DOMContentLoaded', updateNavbarColor);
     </script>
-  </body>
-</html>
+</body>
+</html> 

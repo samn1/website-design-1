@@ -14,83 +14,23 @@
     <!-- Navbar -->
     <nav class="navbar">
       <div class="navbar-logo"></div>
-      <div class="navbar-links">
+      <div class="navbar-links" id="navbarLinks">
         <a href="index.html">Home</a>
+        <a href="product-upload.html">Manage Products</a>
         <a href="#footer">Contact</a>
       </div>
+      <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
     </nav>
 
     <main>
       <div class="products-header animate">
         <h1 class="products-title">All Products</h1>
       </div>
-      <!-- Splide Product Carousel -->
-      <div id="product-carousel" class="splide product-carousel-container animate">
-        <div class="splide__track">
-          <ul class="splide__list">
-            <li class="splide__slide">
-              <div class="product-card animate">
-                <button class="view-more-btn">View More</button>
-                <div class="product-image"></div>
-                <h3 class="product-title">Product 1</h3>
-                <p class="product-desc">Short description for product 1.</p>
-                <h4 class="product-price">$100</h4>
-                <button class="buy-now">Buy Now</button>
-              </div>
-            </li>
-            <li class="splide__slide">
-              <div class="product-card animate">
-                <button class="view-more-btn">View More</button>
-                <div class="product-image"></div>
-                <h3 class="product-title">Product 2</h3>
-                <p class="product-desc">Short description for product 2.</p>
-                <h4 class="product-price">$120</h4>
-                <button class="buy-now">Buy Now</button>
-              </div>
-            </li>
-            <li class="splide__slide">
-              <div class="product-card animate">
-                <button class="view-more-btn">View More</button>
-                <div class="product-image"></div>
-                <h3 class="product-title">Product 3</h3>
-                <p class="product-desc">Short description for product 3.</p>
-                <h4 class="product-price">$90</h4>
-                <button class="buy-now">Buy Now</button>
-              </div>
-            </li>
-            <li class="splide__slide">
-              <div class="product-card animate">
-                <button class="view-more-btn">View More</button>
-                <div class="product-image"></div>
-                <h3 class="product-title">Product 4</h3>
-                <p class="product-desc">Short description for product 4.</p>
-                <h4 class="product-price">$110</h4>
-                <button class="buy-now">Buy Now</button>
-              </div>
-            </li>
-            <li class="splide__slide">
-              <div class="product-card animate">
-                <button class="view-more-btn">View More</button>
-                <div class="product-image"></div>
-                <h3 class="product-title">Product 5</h3>
-                <p class="product-desc">Short description for product 5.</p>
-                <h4 class="product-price">$130</h4>
-                <button class="buy-now">Buy Now</button>
-              </div>
-            </li>
-            <li class="splide__slide">
-              <div class="product-card animate">
-                <button class="view-more-btn">View More</button>
-                <div class="product-image"></div>
-                <h3 class="product-title">Product 6</h3>
-                <p class="product-desc">Short description for product 6.</p>
-                <h4 class="product-price">$140</h4>
-                <button class="buy-now">Buy Now</button>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <div id="productCarouselsContainer"></div>
     </main>
 
     <!-- Footer Section -->
@@ -142,33 +82,91 @@
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        var splide = new Splide('#product-carousel', {
-          type: 'loop',
-          drag: 'free',
-          snap: true,
-          perPage: 4,
-          gap: '1rem',
-          padding: { left: '2rem', right: '2rem' },
-          breakpoints: {
-            1200: {
-              perPage: 3,
-            },
-            900: {
-              perPage: 2,
-            },
-            600: {
-              perPage: 1,
+        // Load Products and Render Carousels
+        async function loadProducts() {
+          try {
+            const response = await fetch('/api/products');
+            const data = await response.json();
+            // Only show products with Status = true
+            const products = (data.products || []).filter(p => {
+              const status = String(p.Status).toLowerCase();
+              return status === 'true' || status === 'active' || status === '1';
+            });
+            // Group products by Product Line, preserving order
+            const productLinesMap = {};
+            products.forEach(product => {
+              const line = product['Product Line'] || 'Uncategorized';
+              if (!productLinesMap[line]) productLinesMap[line] = [];
+              productLinesMap[line].push(product);
+            });
+            const productLines = Object.keys(productLinesMap);
+            const container = document.getElementById('productCarouselsContainer');
+            container.innerHTML = '';
+            if (products.length === 0) {
+              container.innerHTML = '<div style="text-align:center;padding:2rem;font-size:1.2rem;color:#888;">No products available. Please upload products using the Manage Products page.</div>';
+              return;
             }
+            productLines.forEach((line, idx) => {
+              const lineProducts = productLinesMap[line];
+              if (lineProducts.length === 0) return;
+              // Create section
+              const section = document.createElement('section');
+              section.className = 'product-line-section';
+              section.innerHTML = `
+                <h2 style="font-size:2rem;font-weight:400;margin:2rem 0 1rem 0;">${line}</h2>
+                <div id="splide-${idx}" class="splide product-carousel-container">
+                  <div class="splide__track">
+                    <ul class="splide__list">
+                      ${lineProducts.map(product => {
+                        let imageUrl = product['Product Image'] || product['ProductImage'] || product['Image'] || '';
+                        if (!imageUrl) imageUrl = 'https://via.placeholder.com/150?text=No+Image';
+                        return `
+                        <li class="splide__slide">
+                          <div class="product-card animate">
+                            <div class="product-image" style="background-image:url('${imageUrl}');background-size:cover;background-position:center;"></div>
+                            <div style="padding:0.5rem 0 0.2rem 0.5rem;font-size:0.9rem;color:#444;">Product ID: ${product['Product ID'] || 'N/A'}</div>
+                            <div style="font-weight:bold;font-size:1.1rem;padding-left:0.5rem;">${product.Name || 'Unnamed Product'}</div>
+                            <div style="padding:0.2rem 0.5rem 0.5rem 0.5rem;font-size:0.95rem;color:#444;">${product['Product Description'] || 'No description available.'}</div>
+                            <button class="more-info-btn" style="margin-left:0.5rem;margin-top:auto;background:#eee;border:none;padding:0.4rem 1rem;border-radius:4px;color:#888;cursor:pointer;">More Information</button>
+                          </div>
+                        </li>
+                        `;
+                      }).join('')}
+                    </ul>
+                  </div>
+                </div>
+              `;
+              container.appendChild(section);
+            });
+            // Initialize Splide for each carousel
+            productLines.forEach((line, idx) => {
+              const lineProducts = productLinesMap[line];
+              if (lineProducts.length === 0) return;
+              new Splide(`#splide-${idx}`, {
+                type: 'loop',
+                perPage: 4,
+                perMove: 1,
+                gap: '1rem',
+                padding: { left: '2rem', right: '2rem' },
+                breakpoints: {
+                  1200: { perPage: 3 },
+                  900: { perPage: 2 },
+                  600: { perPage: 1 }
+                }
+              }).mount();
+            });
+          } catch (error) {
+            console.error('Error loading products:', error);
           }
-        });
-        splide.mount();
-
+        }
+        // Initial load
+        loadProducts();
+        // Animation functions
         function animateNavbarLinks() {
           var navLinks = document.querySelectorAll('.navbar-links a');
           navLinks.forEach(function(link) {
             link.classList.remove('animate');
           });
-          // Force reflow
           void document.body.offsetWidth;
           navLinks.forEach(function(link) {
             link.classList.add('animate');
@@ -178,17 +176,19 @@
         window.addEventListener('pageshow', function(event) {
           if (event.persisted) animateNavbarLinks();
         });
-
-        // Fade in main content (header, carousel, product cards)
-        document.querySelectorAll('.products-header, .product-carousel-container').forEach(function(el, i) {
+        // Fade in main content
+        document.querySelectorAll('.products-header').forEach(function(el, i) {
           setTimeout(function() {
             el.classList.add('animate');
           }, 100 + i * 100);
         });
-        document.querySelectorAll('.product-card').forEach(function(card, i) {
-          setTimeout(function() {
-            card.classList.add('animate');
-          }, 300 + i * 100);
+        // Hamburger menu toggle for small screens only
+        document.addEventListener('DOMContentLoaded', function() {
+          var toggle = document.getElementById('navbarToggle');
+          var links = document.getElementById('navbarLinks');
+          toggle.addEventListener('click', function() {
+            links.classList.toggle('active');
+          });
         });
       });
     </script>

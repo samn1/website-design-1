@@ -1,0 +1,13 @@
+{
+  "products": [
+    {
+      "Product Line": "Example Line",
+      "Product ID": "EX123",
+      "Name": "Sample Product",
+      "Description": "This is a sample product description.",
+      "Price": 100,
+      "Status": "active"
+    }
+  ],
+  "productLines": ["Example Line"]
+} 

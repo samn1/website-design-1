@@ -1,0 +1,180 @@
+{
+  "products": [
+    {
+      "Name": "iBUC 2 C-band 5W - 80W",
+      "Product Line": "Terrasat",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "iBUC R C-band 100W - 400W",
+      "Product Line": "Terrasat",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "iBUC G C-band 200W - 400W",
+      "Product Line": "Terrasat",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "iBUC 2 Ku-band",
+      "Product Line": "Terrasat",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "iBUC 3 Ku-band",
+      "Product Line": "Terrasat",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "iBUC 3G Ku-band",
+      "Product Line": "Terrasat",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "iBUC R Ku-band",
+      "Product Line": "Terrasat",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "iBUC G Ku-band",
+      "Product Line": "Terrasat",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "1000 Ku-band Single Band PLL LNB",
+      "Product Line": "Norsat",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "2000 Ku-band Single Band PLL LNB",
+      "Product Line": "Norsat",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "4000B Ku-band Single Band PLL LNB",
+      "Product Line": "Norsat",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "3000C C-band Single Band PLL LNB",
+      "Product Line": "Norsat",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "C-band 20W - 120W PicoBUC",
+      "Product Line": "IRT Technologies",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "C-band 150W - 500W AntBUC",
+      "Product Line": "IRT Technologies",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "C-band 600W - 1000W KiloBUC",
+      "Product Line": "IRT Technologies",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "Ku-band 600W - 1000W KiloBUC",
+      "Product Line": "IRT Technologies",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "Ku-band 20W - 200W FemtoBUC",
+      "Product Line": "IRT Technologies",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "Ku-band 100W - 500W AntBUC",
+      "Product Line": "IRT Technologies",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "7800FR 3 RU Multiframe",
+      "Product Line": "Evertz",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "7808RFT Single Channel Wideband RF over Fiber Transmitter",
+      "Product Line": "Evertz",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "7808 RFR Single Channel Wideband RF over Fiber Receiver",
+      "Product Line": "Evertz",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "C-band Block Redundant Frequency Converts FCB100R > L-band IF",
+      "Product Line": "Advantech",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "Ku-band Block Frequency Converters Redundant FCB300R > L-band IF",
+      "Product Line": "Advantech",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "C-band Synthesized Frequency Converters 1:1 Redundant FCS100R > 70MHz IF",
+      "Product Line": "Advantech",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    },
+    {
+      "Name": "Ku-band Synthesized Frequency Converter Redundant Dual with Trays FCS300R > 70MHz IF",
+      "Product Line": "Advantech",
+      "Product ID": "N/A",
+      "Product Description": "",
+      "Status": true
+    }
+  ],
+  "productLines": ["Terrasat", "Norsat", "IRT Technologies", "Evertz", "Advantech"]
+}
