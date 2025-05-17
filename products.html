@@ -271,29 +271,81 @@
     data.productLines.forEach((line, idx) => {
       const lineProducts = data.products.filter(p => p["Product Line"] === line && p.Status);
       if (lineProducts.length === 0) return;
+      
       // Section
       const section = document.createElement('section');
       section.className = 'product-line-section';
-      section.innerHTML = `
-        <div class="product-line-title">${line}</div>
-        <div id="splide-${idx}" class="splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              ${lineProducts.map(product => `
-                <li class="splide__slide">
-                  <div class="product-card">
-                    <div class="product-image"></div>
-                    <div class="product-id">Product ID: ${product["Product ID"] || ''}</div>
-                    <div class="product-name">${product.Name || ''}</div>
-                    <div class="product-desc">${product["Product Description"] || ''}</div>
-                    <button class="more-info-btn">More Information</button>
-                  </div>
-                </li>
-              `).join('')}
-            </ul>
-          </div>
-        </div>
-      `;
+      
+      // Create product line title
+      const titleDiv = document.createElement('div');
+      titleDiv.className = 'product-line-title';
+      titleDiv.textContent = line;
+      section.appendChild(titleDiv);
+      
+      // Create splide container
+      const splideDiv = document.createElement('div');
+      splideDiv.id = `splide-${idx}`;
+      splideDiv.className = 'splide';
+      
+      const trackDiv = document.createElement('div');
+      trackDiv.className = 'splide__track';
+      
+      const listUl = document.createElement('ul');
+      listUl.className = 'splide__list';
+      
+      // Add products
+      lineProducts.forEach(product => {
+        const li = document.createElement('li');
+        li.className = 'splide__slide';
+        
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        
+        // Add product image
+        const imageDiv = document.createElement('div');
+        imageDiv.className = 'product-image';
+        card.appendChild(imageDiv);
+        
+        // Add product ID
+        const idDiv = document.createElement('div');
+        idDiv.className = 'product-id';
+        idDiv.textContent = `Product ID: ${product["Product ID"] || ''}`;
+        card.appendChild(idDiv);
+        
+        // Add product name
+        const nameDiv = document.createElement('div');
+        nameDiv.className = 'product-name';
+        nameDiv.textContent = product.Name || '';
+        card.appendChild(nameDiv);
+        
+        // Add product description
+        const descDiv = document.createElement('div');
+        descDiv.className = 'product-desc';
+        descDiv.textContent = product["Product Description"] || '';
+        card.appendChild(descDiv);
+        
+        // Add more info button/link
+        if (product.Name === "iBUC 2 C-band 5W - 80W") {
+          const link = document.createElement('a');
+          link.href = '/pdfs/Terrasat_1.pdf';
+          link.target = '_blank';
+          link.className = 'more-info-btn';
+          link.textContent = 'More Information';
+          card.appendChild(link);
+        } else {
+          const button = document.createElement('button');
+          button.className = 'more-info-btn';
+          button.textContent = 'More Information';
+          card.appendChild(button);
+        }
+        
+        li.appendChild(card);
+        listUl.appendChild(li);
+      });
+      
+      trackDiv.appendChild(listUl);
+      splideDiv.appendChild(trackDiv);
+      section.appendChild(splideDiv);
       container.appendChild(section);
     });
     // Initialize Splide for each carousel
