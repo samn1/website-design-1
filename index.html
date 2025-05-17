@@ -11,24 +11,17 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            scroll-behavior: smooth;
             font-family: 'Inter', Arial, sans-serif;
-        }
-        .snap-container {
-            height: 100vh;
-            width: 100vw;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
             background: #dedede url('static-demo-bg.jpg') top center no-repeat;
-            background-size: cover;
-            background-position: top center;
-            background-repeat: no-repeat;
-            position: relative;
+            background-size: 100% 100%;
         }
-        .snap-section {
-            height: 100vh;
+        body {
+            min-height: 5477px;
             width: 100vw;
-            scroll-snap-align: start;
+            overflow-x: hidden;
+            position: relative;
+            scroll-snap-type: none;
         }
         .navbar-outer {
             position: fixed;
@@ -145,6 +138,13 @@
                 margin-right: 0.7rem;
             }
         }
+        .anchor {
+            position: absolute;
+            left: 0;
+            width: 100vw;
+            height: 1px;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -152,34 +152,20 @@
         <div class="navbar-inner" id="navbar-inner">
             <div class="navbar-logo" id="navbar-logo"></div>
             <div class="navbar-links">
-                <a href="#" class="navbar-link" id="services-link">Services</a>
-                <a href="#" class="navbar-link" id="contact-link">Contact</a>
+                <a href="#" onclick="window.scrollTo({top:1000,behavior:'smooth'});return false;" class="navbar-link">Services</a>
+                <a href="#footer" class="navbar-link">Contact</a>
                 <a href="404.html" class="navbar-link products">View Products</a>
             </div>
         </div>
     </div>
 
-    <div class="snap-container" id="snap-container">
-        <div id="hero" class="snap-section"></div>
-        <div id="global-reach" class="snap-section"></div>
-        <div id="engineering" class="snap-section"></div>
-        <div id="footer" class="snap-section"></div>
-    </div>
+    <!-- No snap-section divs -->
+    <div id="footer" style="position:absolute;top:5000px;"></div>
 
     <script>
         // Make logo scroll to top
         document.getElementById('navbar-logo').onclick = function() {
-            document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
-        };
-
-        // Snap scroll for navbar links
-        document.getElementById('services-link').onclick = function(e) {
-            e.preventDefault();
-            document.getElementById('global-reach').scrollIntoView({ behavior: 'smooth' });
-        };
-        document.getElementById('contact-link').onclick = function(e) {
-            e.preventDefault();
-            document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         };
 
         // Change navbar color based on scroll position
@@ -187,11 +173,9 @@
             const navbar = document.getElementById('navbar-inner');
             const links = navbar.querySelectorAll('.navbar-link:not(.products)');
             const productsBtn = navbar.querySelector('.navbar-link.products');
-            const snapContainer = document.getElementById('snap-container');
-            const sectionHeight = window.innerHeight;
-            const scrollY = snapContainer.scrollTop;
+            const scrollY = window.scrollY || window.pageYOffset;
             // Section transitions
-            if (scrollY < sectionHeight) {
+            if (scrollY < 1000) {
                 navbar.classList.remove('navbar-dark');
                 navbar.classList.remove('navbar-footer');
                 // Services/Contact white, Products white fill/black text
@@ -199,7 +183,7 @@
                 productsBtn.style.background = '#fff';
                 productsBtn.style.color = '#222';
                 productsBtn.style.borderColor = '#fff';
-            } else if (scrollY >= sectionHeight && scrollY < sectionHeight * 3) {
+            } else if (scrollY >= 1000 && scrollY < 5000) {
                 navbar.classList.add('navbar-dark');
                 navbar.classList.remove('navbar-footer');
                 // All black, Products black fill/white text
@@ -217,7 +201,7 @@
                 productsBtn.style.borderColor = '#fff';
             }
         }
-        document.getElementById('snap-container').addEventListener('scroll', updateNavbarColor);
+        window.addEventListener('scroll', updateNavbarColor);
         window.addEventListener('DOMContentLoaded', updateNavbarColor);
     </script>
 </body>
