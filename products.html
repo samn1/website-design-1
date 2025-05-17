@@ -1,12 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>404 - Page Not Found</title>
-  </head>
-  <body>
-    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; width: 100vw;">
-      <h1>404 - Page Not Found or Under Construction</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Products</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lexend:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: #dedede;
+    }
+    body {
+      min-height: 100vh;
+      width: 100vw;
+      overflow-x: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .navbar-outer {
+      position: fixed;
+      top: 20px;
+      left: 0;
+      width: 100vw;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 96vw;
+      max-width: 1800px;
+      height: 48px;
+      background: rgba(120,120,120,0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 24px;
+      box-shadow: 0 2px 10px 0 rgba(0,0,0,0.13);
+      padding: 0 32px;
+      pointer-events: auto;
+      transition: color 0.3s;
+    }
+    .navbar-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #fff;
+      margin-right: 1.5rem;
+      box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
+      cursor: pointer;
+    }
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: 2.1rem;
+      justify-content: flex-end;
+      flex: 1;
+    }
+    .navbar-link {
+      text-decoration: none;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 1.08rem;
+      font-weight: 500;
+      padding: 0.25rem 0.9rem;
+      border-radius: 12px;
+      transition: background 0.18s, color 0.18s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #222;
+    }
+    .navbar-link.products {
+      border: 1.5px solid #222;
+      background: #fff;
+      color: #222;
+      padding: 0.18rem 1.1rem;
+      margin-left: 0.7rem;
+      font-weight: 500;
+      border-radius: 20px;
+      min-width: 120px;
+      min-height: 32px;
+      box-sizing: border-box;
+      transition: background 0.18s, color 0.18s, border 0.18s;
+    }
+    .navbar-link:hover {
+      background: rgba(0,0,0,0.08);
+      color: #000;
+    }
+    .main-content {
+      margin-top: 100px;
+      flex: 1 0 auto;
+      width: 100vw;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 40px;
+      margin-bottom: 0;
+    }
+    .products-title {
+      font-family: 'Lexend', Arial, sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 40px 0 30px 0;
+      letter-spacing: 0.01em;
+    }
+    .product-line-section {
+      margin-bottom: 60px;
+    }
+    .product-line-title {
+      font-family: 'Lexend', Arial, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 30px 0 18px 10px;
+      letter-spacing: 0.01em;
+    }
+    .splide__slide {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      height: 100%;
+    }
+    .product-card {
+      background: #f3f3f3;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      width: 280px;
+      min-width: 260px;
+      max-width: 320px;
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      margin: 0 8px;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
+      overflow: hidden;
+      position: relative;
+    }
+    .product-image {
+      width: 100%;
+      height: 160px;
+      min-height: 160px;
+      max-height: 160px;
+      background: #bdbdbd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+    }
+    .product-id {
+      font-size: 0.78rem;
+      color: #888;
+      margin-left: 0.7rem;
+      margin-bottom: 0.2rem;
+      font-family: 'Inter', Arial, sans-serif;
+    }
+    .product-name {
+      font-family: 'Lexend', Arial, sans-serif;
+      font-size: 0.98rem;
+      font-weight: 400;
+      margin-left: 0.7rem;
+      margin-bottom: 0.2rem;
+      color: #222;
+    }
+    .product-desc {
+      font-family: 'Lexend', Arial, sans-serif;
+      font-size: 0.92rem;
+      color: #444;
+      margin-left: 0.7rem;
+      margin-bottom: 0.5rem;
+      margin-right: 0.7rem;
+      min-height: 38px;
+    }
+    .more-info-btn {
+      position: absolute;
+      right: 0.7rem;
+      bottom: 0.7rem;
+      background: #eee;
+      border: none;
+      padding: 0.28rem 0.8rem;
+      border-radius: 4px;
+      color: #888;
+      cursor: pointer;
+      font-size: 0.92rem;
+      font-family: 'Inter', Arial, sans-serif;
+      transition: background 0.18s, color 0.18s;
+      box-shadow: none;
+      display: block;
+    }
+    .more-info-btn:hover {
+      background: #ccc;
+      color: #222;
+    }
+    .footer-img { display: none !important; }
+    @media (max-width: 900px) {
+      .main-content {
+        max-width: 98vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
+      }
+      .product-card {
+        width: 98vw;
+        min-width: 180px;
+        max-width: 98vw;
+      }
+    }
+    /* Hide Splide arrows and pagination */
+    .splide__pagination {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar-outer">
+    <div class="navbar-inner">
+      <div class="navbar-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});"></div>
+      <div class="navbar-links">
+        <a href="index.html" class="navbar-link">Home</a>
+        <a href="#footer" class="navbar-link">Contact</a>
+      </div>
     </div>
-  </body>
+  </div>
+  <div class="main-content">
+    <div class="products-title">All Products</div>
+    <div id="productCarouselsContainer"></div>
+  </div>
+  <img src="footer-image.jpg" alt="Footer" class="footer-img" id="footer">
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <script>
+    // Product data
+    const data = {
+      "products": [
+        { "Name": "iBUC 2 C-band 5W - 80W", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "iBUC R C-band 100W - 400W", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "iBUC G C-band 200W - 400W", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "iBUC 2 Ku-band", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "iBUC 3 Ku-band", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "iBUC 3G Ku-band", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "iBUC R Ku-band", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "iBUC G Ku-band", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "1000 Ku-band Single Band PLL LNB", "Product Line": "Norsat", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "2000 Ku-band Single Band PLL LNB", "Product Line": "Norsat", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "4000B Ku-band Single Band PLL LNB", "Product Line": "Norsat", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "3000C C-band Single Band PLL LNB", "Product Line": "Norsat", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "C-band 20W - 120W PicoBUC", "Product Line": "IRT Technologies", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "C-band 150W - 500W AntBUC", "Product Line": "IRT Technologies", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "C-band 600W - 1000W KiloBUC", "Product Line": "IRT Technologies", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "Ku-band 600W - 1000W KiloBUC", "Product Line": "IRT Technologies", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "Ku-band 20W - 200W FemtoBUC", "Product Line": "IRT Technologies", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "Ku-band 100W - 500W AntBUC", "Product Line": "IRT Technologies", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "7800FR 3 RU Multiframe", "Product Line": "Evertz", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "7808RFT Single Channel Wideband RF over Fiber Transmitter", "Product Line": "Evertz", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "7808 RFR Single Channel Wideband RF over Fiber Receiver", "Product Line": "Evertz", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "C-band Block Redundant Frequency Converts FCB100R > L-band IF", "Product Line": "Advantech", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "Ku-band Block Frequency Converters Redundant FCB300R > L-band IF", "Product Line": "Advantech", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "C-band Synthesized Frequency Converters 1:1 Redundant FCS100R > 70MHz IF", "Product Line": "Advantech", "Product ID": "N/A", "Product Description": "", "Status": true },
+        { "Name": "Ku-band Synthesized Frequency Converter Redundant Dual with Trays FCS300R > 70MHz IF", "Product Line": "Advantech", "Product ID": "N/A", "Product Description": "", "Status": true }
+      ],
+      "productLines": ["Terrasat", "Norsat", "IRT Technologies", "Evertz", "Advantech"]
+    };
+
+    // Render carousels
+    const container = document.getElementById('productCarouselsContainer');
+    data.productLines.forEach((line, idx) => {
+      const lineProducts = data.products.filter(p => p["Product Line"] === line && p.Status);
+      if (lineProducts.length === 0) return;
+      // Section
+      const section = document.createElement('section');
+      section.className = 'product-line-section';
+      section.innerHTML = `
+        <div class="product-line-title">${line}</div>
+        <div id="splide-${idx}" class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              ${lineProducts.map(product => `
+                <li class="splide__slide">
+                  <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-id">Product ID: ${product["Product ID"] || ''}</div>
+                    <div class="product-name">${product.Name || ''}</div>
+                    <div class="product-desc">${product["Product Description"] || ''}</div>
+                    <button class="more-info-btn">More Information</button>
+                  </div>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        </div>
+      `;
+      container.appendChild(section);
+    });
+    // Initialize Splide for each carousel
+    data.productLines.forEach((line, idx) => {
+      const lineProducts = data.products.filter(p => p["Product Line"] === line && p.Status);
+      if (lineProducts.length === 0) return;
+      new Splide(`#splide-${idx}`, {
+        type: 'loop',
+        perPage: 4,
+        perMove: 1,
+        gap: '1.5rem',
+        padding: { left: '2rem', right: '2rem' },
+        breakpoints: {
+          1200: { perPage: 3 },
+          900: { perPage: 2 },
+          600: { perPage: 1 }
+        }
+      }).mount();
+    });
+  </script>
+</body>
 </html> 
