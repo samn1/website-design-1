@@ -47,6 +47,23 @@
       padding: 0 32px;
       pointer-events: auto;
       transition: color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .navbar-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 520px;
+      height: 520px;
+      pointer-events: none;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      filter: blur(48px);
+      opacity: 0;
+      transition: opacity 0.5s, transform 0.25s cubic-bezier(.4,1.6,.4,1);
+      z-index: 0;
+      will-change: transform, opacity;
     }
     .navbar-logo {
       width: 32px;
@@ -75,7 +92,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #222;
+      color: #fff;
     }
     .navbar-link.products {
       border: 1.5px solid #222;
@@ -91,8 +108,8 @@
       transition: background 0.18s, color 0.18s, border 0.18s;
     }
     .navbar-link:hover {
-      background: rgba(0,0,0,0.08);
-      color: #000;
+      background: none;
+      color: #fff;
     }
     .main-content {
       margin-top: 100px;
@@ -119,8 +136,9 @@
       font-family: 'Lexend', Arial, sans-serif;
       font-size: 1.6rem;
       font-weight: 700;
-      margin: 30px 0 18px 10px;
+      margin: 30px 0 18px 0;
       letter-spacing: 0.01em;
+      padding-left: 2rem;
     }
     .splide__slide {
       display: flex;
@@ -142,17 +160,30 @@
       box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
       overflow: hidden;
       position: relative;
+      user-select: text;
     }
     .product-image {
       width: 100%;
-      height: 160px;
-      min-height: 160px;
-      max-height: 160px;
+      height: 240px;
+      min-height: 240px;
+      max-height: 240px;
       background: #bdbdbd;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 0.5rem;
+      box-sizing: border-box;
+      padding: 14px;
+      overflow: visible;
+    }
+    .product-image img {
+      transition: none;
+      border-radius: 6px;
+      box-shadow: none;
+    }
+    .product-image:hover img {
+      transform: none;
+      box-shadow: none;
     }
     .product-id {
       font-size: 0.78rem;
@@ -160,6 +191,7 @@
       margin-left: 0.7rem;
       margin-bottom: 0.2rem;
       font-family: 'Inter', Arial, sans-serif;
+      user-select: text;
     }
     .product-name {
       font-family: 'Lexend', Arial, sans-serif;
@@ -168,6 +200,7 @@
       margin-left: 0.7rem;
       margin-bottom: 0.2rem;
       color: #222;
+      user-select: text;
     }
     .product-desc {
       font-family: 'Lexend', Arial, sans-serif;
@@ -177,6 +210,7 @@
       margin-bottom: 0.5rem;
       margin-right: 0.7rem;
       min-height: 38px;
+      user-select: text;
     }
     .more-info-btn {
       position: absolute;
@@ -193,12 +227,83 @@
       transition: background 0.18s, color 0.18s;
       box-shadow: none;
       display: block;
+      text-decoration: none;
     }
     .more-info-btn:hover {
       background: #ccc;
       color: #222;
     }
     .footer-img { display: none !important; }
+    .section4 {
+      background: #00080A;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 100vh;
+      position: relative;
+      padding: 0;
+    }
+    .footer-content {
+      width: 90vw;
+      max-width: 1400px;
+      margin-left: 10vw;
+      margin-top: 8vh;
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-sizing: border-box;
+    }
+    .footer-title {
+      font-size: 2.2rem;
+      margin-bottom: 32px;
+      font-weight: 400;
+      color: #fff;
+    }
+    .footer-label {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+      margin-top: 28px;
+      font-weight: 400;
+      color: #fff;
+    }
+    .footer-value {
+      font-size: 1.1rem;
+      margin-bottom: 0px;
+      font-weight: 400;
+      color: #fff;
+    }
+    .footer-value:last-of-type {
+      margin-bottom: 48px;
+    }
+    .footer-bottom-group {
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .footer-hr-absolute {
+      border: 0;
+      border-top: 1px solid #aaa;
+      width: 90vw;
+      max-width: 1400px;
+      margin: 0 auto 18px auto;
+      z-index: 2;
+      display: block;
+    }
+    .footer-copyright-absolute {
+      width: 90vw;
+      max-width: 1400px;
+      margin: 0 auto 0 auto;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #ccc;
+      font-weight: 400;
+      z-index: 2;
+      padding-bottom: 0;
+      display: block;
+    }
     @media (max-width: 900px) {
       .main-content {
         max-width: 98vw;
@@ -219,11 +324,12 @@
 </head>
 <body>
   <div class="navbar-outer">
-    <div class="navbar-inner">
-      <div class="navbar-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});"></div>
+    <div class="navbar-inner" id="navbar-inner">
+      <div class="navbar-glow"></div>
+      <div class="navbar-logo" style="display:none" onclick="window.scrollTo({top:0,behavior:'smooth'});"></div>
       <div class="navbar-links">
         <a href="index.html" class="navbar-link">Home</a>
-        <a href="#footer" class="navbar-link">Contact</a>
+        <a href="#contact-section" class="navbar-link" id="contact-link">Contact</a>
       </div>
     </div>
   </div>
@@ -231,139 +337,155 @@
     <div class="products-title">All Products</div>
     <div id="productCarouselsContainer"></div>
   </div>
+  <div class="section4" id="contact-section">
+    <div class="footer-content">
+      <div class="footer-title">Get in Touch</div>
+      <div class="footer-label">Address</div>
+      <div class="footer-value">4730 Lougheed Highway, Burnaby BC, Canada</div>
+      <div class="footer-label">Name</div>
+      <div class="footer-value">Paul Cheung</div>
+      <div class="footer-label">Email</div>
+      <div class="footer-value">paul@isatec-intl.com</div>
+      <div class="footer-label">Telephone</div>
+      <div class="footer-value">+1 (555) 123-4567</div>
+    </div>
+    <div class="footer-bottom-group">
+      <hr class="footer-hr-absolute">
+      <div class="footer-copyright-absolute">©Copyrights Placeholder</div>
+    </div>
+  </div>
   <img src="footer-image.jpg" alt="Footer" class="footer-img" id="footer">
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
   <script>
-    // Product data
-    const data = {
-      "products": [
-        { "Name": "iBUC 2 C-band 5W - 80W", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "iBUC R C-band 100W - 400W", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "iBUC G C-band 200W - 400W", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "iBUC 2 Ku-band", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "iBUC 3 Ku-band", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "iBUC 3G Ku-band", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "iBUC R Ku-band", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "iBUC G Ku-band", "Product Line": "Terrasat", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "1000 Ku-band Single Band PLL LNB", "Product Line": "Norsat", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "2000 Ku-band Single Band PLL LNB", "Product Line": "Norsat", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "4000B Ku-band Single Band PLL LNB", "Product Line": "Norsat", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "3000C C-band Single Band PLL LNB", "Product Line": "Norsat", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "C-band 20W - 120W PicoBUC", "Product Line": "IRT Technologies", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "C-band 150W - 500W AntBUC", "Product Line": "IRT Technologies", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "C-band 600W - 1000W KiloBUC", "Product Line": "IRT Technologies", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "Ku-band 600W - 1000W KiloBUC", "Product Line": "IRT Technologies", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "Ku-band 20W - 200W FemtoBUC", "Product Line": "IRT Technologies", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "Ku-band 100W - 500W AntBUC", "Product Line": "IRT Technologies", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "7800FR 3 RU Multiframe", "Product Line": "Evertz", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "7808RFT Single Channel Wideband RF over Fiber Transmitter", "Product Line": "Evertz", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "7808 RFR Single Channel Wideband RF over Fiber Receiver", "Product Line": "Evertz", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "C-band Block Redundant Frequency Converts FCB100R > L-band IF", "Product Line": "Advantech", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "Ku-band Block Frequency Converters Redundant FCB300R > L-band IF", "Product Line": "Advantech", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "C-band Synthesized Frequency Converters 1:1 Redundant FCS100R > 70MHz IF", "Product Line": "Advantech", "Product ID": "N/A", "Product Description": "", "Status": true },
-        { "Name": "Ku-band Synthesized Frequency Converter Redundant Dual with Trays FCS300R > 70MHz IF", "Product Line": "Advantech", "Product ID": "N/A", "Product Description": "", "Status": true }
-      ],
-      "productLines": ["Terrasat", "Norsat", "IRT Technologies", "Evertz", "Advantech"]
-    };
-
-    // Render carousels
-    const container = document.getElementById('productCarouselsContainer');
-    data.productLines.forEach((line, idx) => {
-      const lineProducts = data.products.filter(p => p["Product Line"] === line && p.Status);
-      if (lineProducts.length === 0) return;
-      
-      // Section
-      const section = document.createElement('section');
-      section.className = 'product-line-section';
-      
-      // Create product line title
-      const titleDiv = document.createElement('div');
-      titleDiv.className = 'product-line-title';
-      titleDiv.textContent = line;
-      section.appendChild(titleDiv);
-      
-      // Create splide container
-      const splideDiv = document.createElement('div');
-      splideDiv.id = `splide-${idx}`;
-      splideDiv.className = 'splide';
-      
-      const trackDiv = document.createElement('div');
-      trackDiv.className = 'splide__track';
-      
-      const listUl = document.createElement('ul');
-      listUl.className = 'splide__list';
-      
-      // Add products
-      lineProducts.forEach(product => {
-        const li = document.createElement('li');
-        li.className = 'splide__slide';
-        
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        
-        // Add product image
-        const imageDiv = document.createElement('div');
-        imageDiv.className = 'product-image';
-        card.appendChild(imageDiv);
-        
-        // Add product ID
-        const idDiv = document.createElement('div');
-        idDiv.className = 'product-id';
-        idDiv.textContent = `Product ID: ${product["Product ID"] || ''}`;
-        card.appendChild(idDiv);
-        
-        // Add product name
-        const nameDiv = document.createElement('div');
-        nameDiv.className = 'product-name';
-        nameDiv.textContent = product.Name || '';
-        card.appendChild(nameDiv);
-        
-        // Add product description
-        const descDiv = document.createElement('div');
-        descDiv.className = 'product-desc';
-        descDiv.textContent = product["Product Description"] || '';
-        card.appendChild(descDiv);
-        
-        // Add more info button/link
-        if (product.Name === "iBUC 2 C-band 5W - 80W") {
-          const link = document.createElement('a');
-          link.href = 'pdfs/Terrasat_1.pdf';
-          link.target = '_blank';
-          link.className = 'more-info-btn';
-          link.textContent = 'More Information';
-          card.appendChild(link);
-        } else {
-          const button = document.createElement('button');
-          button.className = 'more-info-btn';
-          button.textContent = 'More Information';
-          card.appendChild(button);
-        }
-        
-        li.appendChild(card);
-        listUl.appendChild(li);
+    // Fetch product data from JSON file
+    fetch('data/products.json')
+      .then(response => response.json())
+      .then(data => {
+        // Render carousels
+        const container = document.getElementById('productCarouselsContainer');
+        data.productLines.forEach((line, idx) => {
+          const lineProducts = data.products.filter(p => p["Product Line"] === line && p.Status);
+          if (lineProducts.length === 0) return;
+          // Section
+          const section = document.createElement('section');
+          section.className = 'product-line-section';
+          // Create product line title
+          const titleDiv = document.createElement('div');
+          titleDiv.className = 'product-line-title';
+          titleDiv.textContent = line;
+          section.appendChild(titleDiv);
+          // Create splide container
+          const splideDiv = document.createElement('div');
+          splideDiv.id = `splide-${idx}`;
+          splideDiv.className = 'splide';
+          const trackDiv = document.createElement('div');
+          trackDiv.className = 'splide__track';
+          const listUl = document.createElement('ul');
+          listUl.className = 'splide__list';
+          // Add products
+          lineProducts.forEach(product => {
+            const li = document.createElement('li');
+            li.className = 'splide__slide';
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            // Add product image
+            const imageDiv = document.createElement('div');
+            imageDiv.className = 'product-image';
+            if (product["Image Link"] && product["Image Link"].trim() !== "") {
+              const img = document.createElement('img');
+              img.src = product["Image Link"];
+              img.alt = product.Name || '';
+              img.style.width = '100%';
+              img.style.height = '100%';
+              img.style.maxWidth = '100%';
+              img.style.maxHeight = '100%';
+              img.style.objectFit = 'contain';
+              img.style.display = 'block';
+              imageDiv.appendChild(img);
+            }
+            card.appendChild(imageDiv);
+            // Add product ID
+            const idDiv = document.createElement('div');
+            idDiv.className = 'product-id';
+            idDiv.textContent = `Product ID: ${product["Product ID"] || ''}`;
+            card.appendChild(idDiv);
+            // Add product name
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'product-name';
+            nameDiv.textContent = product.Name || '';
+            card.appendChild(nameDiv);
+            // Add product description
+            const descDiv = document.createElement('div');
+            descDiv.className = 'product-desc';
+            descDiv.textContent = product["Product Description"] || '';
+            card.appendChild(descDiv);
+            // Add more info button/link
+            if (product["PDF Link"] && product["PDF Link"].trim() !== "") {
+              const link = document.createElement('a');
+              link.href = product["PDF Link"];
+              link.target = '_blank';
+              link.className = 'more-info-btn';
+              link.textContent = 'More Information';
+              card.appendChild(link);
+            }
+            li.appendChild(card);
+            listUl.appendChild(li);
+          });
+          trackDiv.appendChild(listUl);
+          splideDiv.appendChild(trackDiv);
+          section.appendChild(splideDiv);
+          container.appendChild(section);
+        });
+        // Initialize Splide for each carousel
+        data.productLines.forEach((line, idx) => {
+          const lineProducts = data.products.filter(p => p["Product Line"] === line && p.Status);
+          if (lineProducts.length === 0) return;
+          new Splide(`#splide-${idx}`, {
+            perPage: 4,
+            perMove: 1,
+            gap: '1.5rem',
+            padding: { left: '2rem', right: '2rem' },
+            breakpoints: {
+              1200: { perPage: 3 },
+              900: { perPage: 2 },
+              600: { perPage: 1 }
+            }
+          }).mount();
+        });
       });
-      
-      trackDiv.appendChild(listUl);
-      splideDiv.appendChild(trackDiv);
-      section.appendChild(splideDiv);
-      container.appendChild(section);
+    // Navbar glow effect (rewritten)
+    const navbarInner = document.querySelector('.navbar-inner');
+    const navbarGlow = document.querySelector('.navbar-glow');
+    let glowTargetX = 0, glowTargetY = 0;
+    let glowCurrentX = 0, glowCurrentY = 0;
+    let glowAnimating = false;
+
+    function animateGlow() {
+      glowCurrentX += (glowTargetX - glowCurrentX) * 0.22;
+      glowCurrentY += (glowTargetY - glowCurrentY) * 0.22;
+      navbarGlow.style.transform = `translate(${glowCurrentX - 260}px, ${glowCurrentY - 260}px)`;
+      if (Math.abs(glowCurrentX - glowTargetX) > 0.5 || Math.abs(glowCurrentY - glowTargetY) > 0.5) {
+        requestAnimationFrame(animateGlow);
+      } else {
+        glowAnimating = false;
+      }
+    }
+
+    navbarInner.addEventListener('mousemove', (e) => {
+      const rect = navbarInner.getBoundingClientRect();
+      glowTargetX = e.clientX - rect.left;
+      glowTargetY = e.clientY - rect.top;
+      if (!glowAnimating) {
+        glowAnimating = true;
+        requestAnimationFrame(animateGlow);
+      }
+      navbarGlow.style.opacity = 1;
     });
-    // Initialize Splide for each carousel
-    data.productLines.forEach((line, idx) => {
-      const lineProducts = data.products.filter(p => p["Product Line"] === line && p.Status);
-      if (lineProducts.length === 0) return;
-      new Splide(`#splide-${idx}`, {
-        type: 'loop',
-        perPage: 4,
-        perMove: 1,
-        gap: '1.5rem',
-        padding: { left: '2rem', right: '2rem' },
-        breakpoints: {
-          1200: { perPage: 3 },
-          900: { perPage: 2 },
-          600: { perPage: 1 }
-        }
-      }).mount();
+    navbarInner.addEventListener('mouseenter', (e) => {
+      navbarGlow.style.opacity = 1;
+    });
+    navbarInner.addEventListener('mouseleave', (e) => {
+      navbarGlow.style.opacity = 0;
     });
   </script>
 </body>

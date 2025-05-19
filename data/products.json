@@ -5,175 +5,225 @@
       "Product Line": "Terrasat",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/iBUC 2 C-band 5W - 80W.pdf",
+      "Image Link": "images/webp/iBUC 2 C-band 5W - 80W.webp"
     },
     {
       "Name": "iBUC R C-band 100W - 400W",
       "Product Line": "Terrasat",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/iBUC R C-band 100W - 400W.pdf",
+      "Image Link": "images/webp/iBUC R C-band 100W - 400W.webp"
     },
     {
       "Name": "iBUC G C-band 200W - 400W",
       "Product Line": "Terrasat",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/iBUC G C-band 200W - 400W.pdf",
+      "Image Link": "images/webp/iBUC G C-band 200W - 400W.webp"
     },
     {
       "Name": "iBUC 2 Ku-band",
       "Product Line": "Terrasat",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/iBUC 2 Ku-band.pdf",
+      "Image Link": "images/webp/iBUC 2 Ku-band.webp"
     },
     {
       "Name": "iBUC 3 Ku-band",
       "Product Line": "Terrasat",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/iBUC 3 Ku-band.pdf",
+      "Image Link": "images/webp/iBUC 3 Ku-band.webp"
     },
     {
       "Name": "iBUC 3G Ku-band",
       "Product Line": "Terrasat",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/iBUC 3G Ku-band.pdf",
+      "Image Link": "images/webp/iBUC 3G Ku-band.webp"
     },
     {
       "Name": "iBUC R Ku-band",
       "Product Line": "Terrasat",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/iBUC R Ku-band.pdf",
+      "Image Link": "images/webp/iBUC R Ku-band.webp"
     },
     {
       "Name": "iBUC G Ku-band",
       "Product Line": "Terrasat",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/iBUC G Ku-band.pdf",
+      "Image Link": "images/webp/iBUC G Ku-band.webp"
     },
     {
       "Name": "1000 Ku-band Single Band PLL LNB",
       "Product Line": "Norsat",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/1000 Ku-band Single Band PLL LNB.pdf",
+      "Image Link": "images/webp/1000 Ku-band Single Band PLL LNB.webp"
     },
     {
       "Name": "2000 Ku-band Single Band PLL LNB",
       "Product Line": "Norsat",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/2000 Ku-band Single Band PLL LNB.pdf",
+      "Image Link": "images/webp/2000 Ku-band Single Band PLL LNB.webp"
     },
     {
       "Name": "4000B Ku-band Single Band PLL LNB",
       "Product Line": "Norsat",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/4000B Ku-band Single Band PLL LNB.pdf",
+      "Image Link": "images/webp/4000B Ku-band Single Band PLL LNB.webp"
     },
     {
       "Name": "3000C C-band Single Band PLL LNB",
       "Product Line": "Norsat",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/3000C C-band Single Band PLL LNB.pdf",
+      "Image Link": "images/webp/3000C C-band Single Band PLL LNB.webp"
     },
     {
       "Name": "C-band 20W - 120W PicoBUC",
       "Product Line": "IRT Technologies",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/C-band 20W - 120W PicoBUC.pdf",
+      "Image Link": "images/webp/C-band 20W - 120W PicoBUC.webp"
     },
     {
       "Name": "C-band 150W - 500W AntBUC",
       "Product Line": "IRT Technologies",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/C-band 150W - 500W AntBUC.pdf",
+      "Image Link": "images/webp/C-band 150W - 500W AntBUC.webp"
     },
     {
       "Name": "C-band 600W - 1000W KiloBUC",
       "Product Line": "IRT Technologies",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/C-band 600W - 1000W KiloBUC.pdf",
+      "Image Link": "images/webp/C-band 600W - 1000W KiloBUC.webp"
     },
     {
       "Name": "Ku-band 600W - 1000W KiloBUC",
       "Product Line": "IRT Technologies",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/Ku-band 600W - 1000W KiloBUC.pdf",
+      "Image Link": ""
     },
     {
       "Name": "Ku-band 20W - 200W FemtoBUC",
       "Product Line": "IRT Technologies",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/Ku-band 20W - 200W FemtoBUC.pdf",
+      "Image Link": "images/webp/Ku-band 20W - 200W FemtoBUC.webp"
     },
     {
       "Name": "Ku-band 100W - 500W AntBUC",
       "Product Line": "IRT Technologies",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "",
+      "Image Link": ""
     },
     {
       "Name": "7800FR 3 RU Multiframe",
       "Product Line": "Evertz",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/7800FR 3 RU Multiframe.pdf",
+      "Image Link": ""
     },
     {
       "Name": "7808RFT Single Channel Wideband RF over Fiber Transmitter",
       "Product Line": "Evertz",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/7808RFT Single Channel Wideband RF over Fiber Transmitter.pdf",
+      "Image Link": ""
     },
     {
       "Name": "7808 RFR Single Channel Wideband RF over Fiber Receiver",
       "Product Line": "Evertz",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/7808 RFR Single Channel Wideband RF over Fiber Receiver.pdf",
+      "Image Link": ""
     },
     {
       "Name": "C-band Block Redundant Frequency Converts FCB100R > L-band IF",
       "Product Line": "Advantech",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/C-band Block Redundant Frequency Converts FCB100R  L-band IF.pdf",
+      "Image Link": "images/webp/C-band Block Redundant Frequency Converts FCB100R L-band IF.webp"
     },
     {
       "Name": "Ku-band Block Frequency Converters Redundant FCB300R > L-band IF",
       "Product Line": "Advantech",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/Ku-band Block Frequency Converters Redundant FCB300R  L-band IF.pdf",
+      "Image Link": ""
     },
     {
       "Name": "C-band Synthesized Frequency Converters 1:1 Redundant FCS100R > 70MHz IF",
       "Product Line": "Advantech",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/C-band Synthesized Frequency Converters 11 Redundant FCS100R  70MHz IF.pdf",
+      "Image Link": "images/webp/C-band Synthesized Frequency Converters 11 Redundant FCS100R 70MHz IF.webp"
     },
     {
       "Name": "Ku-band Synthesized Frequency Converter Redundant Dual with Trays FCS300R > 70MHz IF",
       "Product Line": "Advantech",
       "Product ID": "N/A",
       "Product Description": "",
-      "Status": true
+      "Status": true,
+      "PDF Link": "pdfs/Ku-band Synthesized Frequency Converter Redundant Dual with Trays FCS300R  70MHz IF.pdf",
+      "Image Link": ""
     }
   ],
   "productLines": ["Terrasat", "Norsat", "IRT Technologies", "Evertz", "Advantech"]
