@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Products</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lexend:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lexend:wght@700&family=Montserrat:wght@400;500&family=Sansation:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
   <style>
     html, body {
       height: 100%;
       margin: 0;
       padding: 0;
-      font-family: 'Inter', Arial, sans-serif;
+      font-family: 'Montserrat', Arial, sans-serif;
       background: #dedede;
     }
     body {
@@ -25,8 +25,9 @@
     .navbar-outer {
       position: fixed;
       top: 20px;
-      left: 0;
-      width: 100vw;
+      left: 50%;
+      width: 96vw;
+      transform: translateX(-50%);
       z-index: 100;
       display: flex;
       justify-content: center;
@@ -36,7 +37,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 96vw;
+      width: 100%;
       max-width: 1800px;
       height: 48px;
       background: rgba(120,120,120,0.55);
@@ -49,6 +50,7 @@
       transition: color 0.3s;
       position: relative;
       overflow: hidden;
+      margin: 0 auto;
     }
     .navbar-glow {
       position: absolute;
@@ -112,7 +114,7 @@
       color: #fff;
     }
     .main-content {
-      margin-top: 100px;
+      margin-top: 120px;
       flex: 1 0 auto;
       width: 100vw;
       max-width: 1400px;
@@ -122,7 +124,7 @@
       margin-bottom: 0;
     }
     .products-title {
-      font-family: 'Lexend', Arial, sans-serif;
+      font-family: 'Sansation', Arial, sans-serif;
       font-size: 2.5rem;
       font-weight: 700;
       text-align: center;
@@ -133,7 +135,7 @@
       margin-bottom: 60px;
     }
     .product-line-title {
-      font-family: 'Lexend', Arial, sans-serif;
+      font-family: 'Sansation', Arial, sans-serif;
       font-size: 1.6rem;
       font-weight: 700;
       margin: 30px 0 18px 0;
@@ -194,7 +196,7 @@
       user-select: text;
     }
     .product-name {
-      font-family: 'Lexend', Arial, sans-serif;
+      font-family: 'Sansation', Arial, sans-serif;
       font-size: 0.98rem;
       font-weight: 400;
       margin-left: 0.7rem;
@@ -203,7 +205,7 @@
       user-select: text;
     }
     .product-desc {
-      font-family: 'Lexend', Arial, sans-serif;
+      font-family: 'Montserrat', Arial, sans-serif;
       font-size: 0.92rem;
       color: #444;
       margin-left: 0.7rem;
@@ -320,6 +322,21 @@
     .splide__pagination {
       display: none !important;
     }
+    h1, h2, h3, h4, h5, h6, .products-title, .product-line-title, .navbar-link {
+      font-family: 'Sansation', Arial, sans-serif !important;
+    }
+    .more-info-btn {
+      font-family: 'Montserrat', Arial, sans-serif !important;
+    }
+    .copyright-footer {
+      font-family: 'Montserrat', Arial, sans-serif;
+      text-align: center;
+      padding: 32px 0;
+      margin-top: 48px;
+      color: #666;
+      font-size: 1.1rem;
+      border-top: 1px solid #ddd;
+    }
   </style>
 </head>
 <body>
@@ -329,7 +346,7 @@
       <div class="navbar-logo" style="display:none" onclick="window.scrollTo({top:0,behavior:'smooth'});"></div>
       <div class="navbar-links">
         <a href="index.html" class="navbar-link">Home</a>
-        <a href="#contact-section" class="navbar-link" id="contact-link">Contact</a>
+        <a href="index.html#contact-section" class="navbar-link" id="contact-link">Contact</a>
       </div>
     </div>
   </div>
@@ -337,24 +354,9 @@
     <div class="products-title">All Products</div>
     <div id="productCarouselsContainer"></div>
   </div>
-  <div class="section4" id="contact-section">
-    <div class="footer-content">
-      <div class="footer-title">Get in Touch</div>
-      <div class="footer-label">Address</div>
-      <div class="footer-value">4730 Lougheed Highway, Burnaby BC, Canada</div>
-      <div class="footer-label">Name</div>
-      <div class="footer-value">Paul Cheung</div>
-      <div class="footer-label">Email</div>
-      <div class="footer-value">paul@isatec-intl.com</div>
-      <div class="footer-label">Telephone</div>
-      <div class="footer-value">+1 (555) 123-4567</div>
-    </div>
-    <div class="footer-bottom-group">
-      <hr class="footer-hr-absolute">
-      <div class="footer-copyright-absolute">©Copyrights Placeholder</div>
-    </div>
+  <div class="copyright-footer">
+    © Copyright 2025 Isatec International Technology Corporation
   </div>
-  <img src="footer-image.jpg" alt="Footer" class="footer-img" id="footer">
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
   <script>
     // Fetch product data from JSON file

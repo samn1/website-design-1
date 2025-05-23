@@ -136,13 +136,13 @@
       "Image Link": "images/webp/C-band 600W - 1000W KiloBUC.webp"
     },
     {
-      "Name": "Ku-band 600W - 1000W KiloBUC",
+      "Name": "IRT C-band / K-band 600W-1000W Kilo BUC",
       "Product Line": "IRT Technologies",
       "Product ID": "N/A",
       "Product Description": "",
       "Status": true,
-      "PDF Link": "pdfs/Ku-band 600W - 1000W KiloBUC.pdf",
-      "Image Link": ""
+      "PDF Link": "pdfs/C-band 600W - 1000W KiloBUC.pdf",
+      "Image Link": "images/webp/C-band 600W - 1000W KiloBUC.webp"
     },
     {
       "Name": "Ku-band 20W - 200W FemtoBUC",
@@ -159,8 +159,8 @@
       "Product ID": "N/A",
       "Product Description": "",
       "Status": true,
-      "PDF Link": "",
-      "Image Link": ""
+      "PDF Link": "pdfs/Ku-band 100W - 500W AntBUC.pdf",
+      "Image Link": "images/webp/Ku-band 100W - 500W AntBUC.webp"
     },
     {
       "Name": "7800FR 3 RU Multiframe",
@@ -205,7 +205,7 @@
       "Product Description": "",
       "Status": true,
       "PDF Link": "pdfs/Ku-band Block Frequency Converters Redundant FCB300R  L-band IF.pdf",
-      "Image Link": ""
+      "Image Link": "images/webp/Ku-band Block Frequency Converters Redundant FCB300R  L-band IF.webp"
     },
     {
       "Name": "C-band Synthesized Frequency Converters 1:1 Redundant FCS100R > 70MHz IF",
@@ -223,7 +223,7 @@
       "Product Description": "",
       "Status": true,
       "PDF Link": "pdfs/Ku-band Synthesized Frequency Converter Redundant Dual with Trays FCS300R  70MHz IF.pdf",
-      "Image Link": ""
+      "Image Link": "images/webp/Ku-band Synthesized Frequency Converter Redundant Dual with Trays FCS300R  70MHz IF.webp"
     }
   ],
   "productLines": ["Terrasat", "Norsat", "IRT Technologies", "Evertz", "Advantech"]
