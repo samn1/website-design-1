@@ -466,6 +466,41 @@
         min-height: 120px;
         max-height: 300px;
       }
+      .hero-header {
+        font-size: 2.8rem;
+        margin-left: 2vw;
+        margin-bottom: 3vh;
+        margin-top: 2vh;
+        padding: 1vw;
+      }
+      .hero-subheader {
+        font-size: 1rem;
+        top: 12vh;
+        right: 3vw;
+        max-width: 90vw;
+      }
+      .global-header {
+        font-size: 2.5rem;
+      }
+      .global-subheader {
+        font-size: 1rem;
+      }
+      .engineering-header {
+        font-size: 2.5rem;
+        margin-top: 24px;
+      }
+      .engineering-paragraph, .engineering-list {
+        font-size: 0.95rem;
+      }
+      .footer-title {
+        font-size: 1.8rem;
+      }
+      .footer-label {
+        font-size: 1.2rem;
+      }
+      .footer-value {
+        font-size: 1rem;
+      }
     }
     @media (max-width: 700px) {
       .section3 {
@@ -480,19 +515,102 @@
         margin: 18px auto 0 auto;
       }
       .engineering-right {
-        padding-left: 0;
-        padding-top: 12px;
+        padding: 24px 16px;
         max-width: 98vw;
       }
       .engineering-header {
-        font-size: 1.3rem;
+        font-size: 2rem;
+        margin-top: 0;
       }
       .global-left {
-        padding: 2vw;
-        margin-left: 2vw;
-        margin-right: 2vw;
-        margin-top: 2vh;
-        margin-bottom: 2vh;
+        padding: 16px;
+        margin: 16px;
+      }
+      .hero-header {
+        font-size: 2rem;
+        margin-left: 16px;
+        margin-bottom: 24px;
+        margin-top: 16px;
+      }
+      .hero-subheader {
+        font-size: 0.9rem;
+        top: 10vh;
+        right: 16px;
+        max-width: 85vw;
+      }
+      .global-header {
+        font-size: 2rem;
+      }
+      .global-subheader {
+        font-size: 0.9rem;
+      }
+      .footer-content {
+        margin-left: 16px;
+        margin-top: 48px;
+      }
+      .footer-title {
+        font-size: 1.6rem;
+        margin-bottom: 24px;
+      }
+      .footer-label {
+        font-size: 1.1rem;
+        margin-top: 20px;
+      }
+      .footer-value {
+        font-size: 0.95rem;
+      }
+      .footer-value:last-of-type {
+        margin-bottom: 32px;
+      }
+      .footer-copyright-absolute {
+        font-size: 0.9rem;
+        padding: 0 16px;
+      }
+      .navbar-inner {
+        padding: 0 16px;
+      }
+      .navbar-logo {
+        font-size: 1.1rem;
+      }
+      .navbar-link {
+        font-size: 0.95rem;
+      }
+      .navbar-link.products {
+        padding: 0.15rem 0.9rem;
+        min-width: 100px;
+        min-height: 28px;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero-header {
+        font-size: 1.8rem;
+      }
+      .hero-subheader {
+        font-size: 0.85rem;
+      }
+      .global-header {
+        font-size: 1.8rem;
+      }
+      .global-subheader {
+        font-size: 0.85rem;
+      }
+      .engineering-header {
+        font-size: 1.8rem;
+      }
+      .engineering-paragraph, .engineering-list {
+        font-size: 0.85rem;
+      }
+      .navbar-links {
+        gap: 0.8rem;
+      }
+      .navbar-link {
+        font-size: 0.9rem;
+        padding: 0.2rem 0.7rem;
+      }
+      .navbar-link.products {
+        padding: 0.15rem 0.8rem;
+        min-width: 90px;
+        font-size: 0.9rem;
       }
     }
     p {
@@ -657,6 +775,39 @@
       currentSection = index;
     }
 
+    // Touch event handling for mobile devices
+    let touchStartY = 0;
+    let touchEndY = 0;
+    const touchThreshold = 50; // Minimum distance for swipe
+
+    document.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (e) => {
+      if (isScrolling) return;
+      
+      touchEndY = e.touches[0].clientY;
+      const touchDiff = touchStartY - touchEndY;
+
+      if (Math.abs(touchDiff) > touchThreshold) {
+        isScrolling = true;
+        
+        if (touchDiff > 0) {
+          // Swipe up
+          scrollToSection(currentSection + 1);
+        } else {
+          // Swipe down
+          scrollToSection(currentSection - 1);
+        }
+
+        setTimeout(() => {
+          isScrolling = false;
+        }, 1000);
+      }
+    }, { passive: true });
+
+    // Prevent default touch behavior only for wheel events
     window.addEventListener('wheel', (e) => {
       e.preventDefault();
       
@@ -671,7 +822,7 @@
 
       setTimeout(() => {
         isScrolling = false;
-      }, 1000); // Adjust this value to control scroll speed
+      }, 1000);
     }, { passive: false });
 
     // Smooth scroll for Contact link
