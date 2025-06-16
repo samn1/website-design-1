@@ -20,6 +20,21 @@ app.use(cors({
 // Serve static files SECOND (after CORS)
 app.use(express.static('public'));
 app.use(express.static('.'));  // Serve files from root directory too
+
+// URL rewriting rules
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../index.html'));
+});
+
+app.get('/products', (req, res) => {
+    res.sendFile(path.join(__dirname, '../products.html'));
+});
+
+// Handle 404s - this should be after all other routes
+app.use((req, res) => {
+    res.status(404).sendFile(path.join(__dirname, '../404.html'));
+});
+
 app.use(express.json());
 
 // Ensure data and templates directories exist

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Products</title>
+  <title>Isatec International</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lexend:wght@700&family=Montserrat:wght@400;500&family=Sansation:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
   <style>
@@ -68,13 +68,15 @@
       will-change: transform, opacity;
     }
     .navbar-logo {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #fff;
+      font-family: 'Sansation', Arial, sans-serif !important;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
       margin-right: 1.5rem;
-      box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
       cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
     }
     .navbar-links {
       display: flex;
@@ -343,10 +345,10 @@
   <div class="navbar-outer">
     <div class="navbar-inner" id="navbar-inner">
       <div class="navbar-glow"></div>
-      <div class="navbar-logo" style="display:none" onclick="window.scrollTo({top:0,behavior:'smooth'});"></div>
+      <a href="/" class="navbar-logo" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Isatec International</a>
       <div class="navbar-links">
-        <a href="index.html" class="navbar-link">Home</a>
-        <a href="index.html#contact-section" class="navbar-link" id="contact-link">Contact</a>
+        <a href="/" class="navbar-link">Home</a>
+        <a href="/#contact-section" class="navbar-link" id="contact-link">Contact</a>
       </div>
     </div>
   </div>

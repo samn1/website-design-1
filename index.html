@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Page</title>
+  <title>Isatec International</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lexend:wght@700&family=Montserrat:wght@400;500&family=Sansation:wght@400;700&display=swap" rel="stylesheet">
   <style>
     html, body {
@@ -71,13 +71,15 @@
       will-change: transform, opacity;
     }
     .navbar-logo {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #fff;
+      font-family: 'Sansation', Arial, sans-serif !important;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
       margin-right: 1.5rem;
-      box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
       cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
     }
     .navbar-links {
       display: flex;
@@ -353,7 +355,7 @@
     }
     .engineering-header {
       font-family: 'Sansation', Arial, sans-serif;
-      font-size: 2.1rem;
+      font-size: 3.2rem;
       font-weight: 700;
       color: #111;
       margin-bottom: 14px;
@@ -517,11 +519,11 @@
   <div class="navbar-outer">
     <div class="navbar-inner" id="navbar-inner">
       <div class="navbar-glow"></div>
-      <div class="navbar-logo" style="display:none" onclick="window.scrollTo({top:0,behavior:'smooth'});"></div>
+      <a href="/" class="navbar-logo" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Isatec International</a>
       <div class="navbar-links">
         <a href="#services-section" class="navbar-link" id="services-link">Services</a>
         <a href="#contact-section" class="navbar-link" id="contact-link">Contact</a>
-        <a href="products.html" class="navbar-link products">View Products</a>
+        <a href="/products" class="navbar-link products">View Products</a>
       </div>
     </div>
   </div>
@@ -539,7 +541,7 @@
     <div class="global-left">
       <div class="global-header">Global Reach, Trusted Supply</div>
       <div class="global-subheader">
-        We provide high quality, reliable Satellite tele-communications products from Canada, US, UK, Israel, China to our global customers worldwide, ensuring their services are delivered at the best quality equipment with maximum availability.
+        We provide high quality, reliable Satellite telecommunications products from Canada, US, UK, Israel, China to our global customers worldwide, ensuring their services are delivered at the best quality equipment with maximum availability.
       </div>
     </div>
     <div class="global-right">
@@ -552,10 +554,10 @@
         <img src="images/misc/satellite2.webp" alt="Satellite" class="engineering-img" />
       </div>
       <div class="engineering-right">
-        <div class="engineering-header">Engineering Expertise & System Integration</div>
+        <div class="engineering-header">Engineering Expertise &<br>System Integration</div>
         <div class="engineering-paragraph">
           We bring in decades of experience in project management and system integration in satellite telecommunications.<br><br>
-          Our antenna systems range from 0.4m beam steering panel antennas to small- and mid-size offset VSAT antennas, and up to &gt;9m dual-reflector auto-tracking antennas.<br><br>
+          Our antenna systems range from 0.4m beam steering panel antennas to small- and mid-size offset VSAT antennas, and up to >9m dual-reflector auto-tracking antennas.<br><br>
           RF frequency support includes L, C, X, Ku, K, and Ka bands, operating across global LEO, MEO, and GEO satellites.
         </div>
         <div class="engineering-paragraph" style="margin-bottom: 8px;">Antenna System Range:</div>
@@ -585,10 +587,9 @@
   <div class="section section4" id="contact-section">
     <div class="footer-content">
       <div class="footer-title">Get in Touch</div>
+      <div class="footer-value">Paul Cheung</div>
       <div class="footer-label">Address</div>
       <div class="footer-value">4730 Lougheed Highway, Burnaby BC, Canada</div>
-      <div class="footer-label">Name</div>
-      <div class="footer-value">Paul Cheung</div>
       <div class="footer-label">Email</div>
       <div class="footer-value">paul@isatec-intl.com</div>
       <div class="footer-label">Telephone</div>
@@ -606,6 +607,15 @@
     let glowTargetX = 0, glowTargetY = 0;
     let glowCurrentX = 0, glowCurrentY = 0;
     let glowAnimating = false;
+
+    // Update navbar logo click handler
+    document.querySelector('.navbar-logo').onclick = function(e) {
+      e.preventDefault();
+      currentSection = 0;
+      sections[0].scrollIntoView({ behavior: 'smooth' });
+      return false;
+    };
+
     function animateGlow() {
       glowCurrentX += (glowTargetX - glowCurrentX) * 0.22;
       glowCurrentY += (glowTargetY - glowCurrentY) * 0.22;
